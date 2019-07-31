@@ -10,7 +10,7 @@
 
   ############### Sistem genelinde kullanılacak değişkenkler
   ############### Sistem genelinde kullanılacak değişkenkler
-
+  $GENEL_sayfa_basligi = "Aç Adam!"
 
 
 ?>

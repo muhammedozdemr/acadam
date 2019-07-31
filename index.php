@@ -1,7 +1,21 @@
-<?php require("ayarlar.php");?>
+<?php
+  // Sistem genelinde kullanılacak ayarların bulunduğu değişkenleri alalım
+  require("ayarlar.php");
 
-<?php require("sayfa.ust.php");?>
+  // Sistem genelinde kullanılacak hazır fonksiyonları yükleyelim
+  require("kutuphane.php");
 
-<?php require("ana.sayfa.php");?>
+  // Veri tabanı bağlantısını kuralım
+  require("db.php");
 
-<?php require("sayfa.alt.php");?>
+  // Sayfanın ÜST kısmını alalım
+  require("sayfa.ust.php");
+
+  // Ana sayfayı çağıralım
+  require("musteri.kayit.formu.php");
+
+  //require("ana.sayfa.php");
+
+  // Sayfanın alt kısmını alalım
+  require("sayfa.alt.php");
+?>

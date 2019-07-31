@@ -10,4 +10,3 @@ if (!$db) { die("Hata oluştu: " . mysqli_connect_error()); }
 
 // Oluşabilecek Türkçe karakter gösterimi sorunlarını giderelim...
 mysqli_query($db, "set names 'utf8'");
-?>
