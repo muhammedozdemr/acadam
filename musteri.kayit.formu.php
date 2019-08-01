@@ -80,24 +80,22 @@
 
 ?>
 <div class="row">
-
-  <div class="col-md-8 offset-md-2 py-5">
-
+  <div class="col-md-8 offset-md-2 my-5 text-center">
     <h1>Müşteri Kayıt Formu</h1>
-
     <?php
       if( isset($MESAJ) and count($MESAJ) > 0 ) {
         echo "<div style='color:red'>";
-        foreach ($MESAJ as $key => $value) {
-          echo "$value <br />";
-        }
+        foreach ($MESAJ as $key => $value) { echo "$value <br />"; }
         echo "</div>";
       }
     ?>
+  </div>
+</div>
 
-    <form id="FormMusteriKayit" method="POST" autocomplete="off">
-      <div class="controls">
 
+<form id="FormMusteriKayit" method="POST" autocomplete="off">
+<div class="row">
+    <div class="col-md-5 offset-md-1">
       <div class="form-group">Adınız Soyadınız *<input required type="text" name="adi_soyadi" class="form-control" value="<?php echo $_POST["adi_soyadi"];?>" placeholder="Adınız soyadınız"></div>
       <div class="form-group">Telefonunuz *<input required type="text" name="telefonu" class="form-control" value="<?php echo $_POST["telefonu"];?>" placeholder="Telefon numaranız"></div>
       <div class="form-group">ePosta Adresi *<input required type="email" name="eposta" class="form-control" value="<?php echo $_POST["eposta"];?>" placeholder="ePosta adresiniz"></div>
@@ -105,6 +103,9 @@
       <div class="form-group">Parolanız (tekrar)*<input required type="password" name="parola2" class="form-control" value="" placeholder="Parolanız (tekrar)"></div>
       <div class="form-group">Şehir * <select required name="il_kodu" id="il_kodu" onchange="IlceleriDoldur()" class="form-control" >> <?php echo $optionsIller; ?> </select> </div>
       <div class="form-group">İlçe * <select required name="ilce_kodu" id="ilce_kodu" class="form-control" ></select> </div>
+    </div>
+
+    <div class="col-md-5">
       <div class="form-group">Mahalle <input type="text" name="mahalle" class="form-control" value="<?php echo $_POST["mahalle"];?>" placeholder="Mahalle adı"></div>
       <div class="form-group">Cadde <input type="text" name="cadde" class="form-control" value="<?php echo $_POST["cadde"];?>" placeholder="Cadde adı"></div>
       <div class="form-group">Sokak <input type="text" name="sokak" class="form-control" value="<?php echo $_POST["sokak"];?>" placeholder="Sokak adı"></div>
@@ -114,12 +115,9 @@
       <div class="form-group">Adres Tarifi <input type="text" name="adres_tarifi" class="form-control" value="<?php echo $_POST["adres_tarifi"];?>" placeholder="Adres tarifiniz"></div>
 
       <input class="btn btn-success" type="submit" value="Kaydet !">
-
-      </div>
-    </form>
-
-  </div> <!-- Form Sutunu -->
+    </div>
 </div> <!-- Form Satırı -->
+</form>
 
 <script type="text/javascript">
     function IlceleriDoldur() {
