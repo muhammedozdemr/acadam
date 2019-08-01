@@ -10,7 +10,7 @@
   $rows = mysqli_query($db, $SQL);
 
   $arrIlceler = array(); // İlçe adları için boş bir dizi hazırlayalım
-  $arrIlceler[] = "SEÇİNİZ"; // İlçe seçiminde İLK elemanın değeri SEÇİNİZ olsun.
+  $arrIlceler[0] = "*** SEÇİNİZ ***"; // İlçe seçiminde İLK elemanın değeri SEÇİNİZ olsun.
   while($row = mysqli_fetch_assoc($rows)) { // Kayıt adedince dönelim
     $arrIlceler[ $row["ilce_kodu"] ] = $row["ilce_adi"];
   } // while
