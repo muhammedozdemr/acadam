@@ -119,61 +119,56 @@
 
 
 ?>
-<div class="row">
-
-  <div class="col-md-8 offset-md-2 py-5">
-
-    <h1>Esnaf Kayıt Formu</h1>
-
-    <?php
-      if( isset($MESAJ) and count($MESAJ) > 0 ) {
-        echo "<div style='color:red'>";
-        foreach ($MESAJ as $key => $value) {
-          echo "$value <br />";
+  <div class="row">
+    <div class="col-md-8 offset-md-2 my-5 text-center">
+      <h1>Esnaf Kayıt Formu</h1>
+      <?php
+        if( isset($MESAJ) and count($MESAJ) > 0 ) {
+          echo "<div style='color:red'>";
+          foreach ($MESAJ as $key => $value) { echo "$value <br />"; }
+          echo "</div>";
         }
-        echo "</div>";
-      }
-    ?>
+      ?>
+    </div>
+  </div>
 
-    <form id="FormEsnafKayit" method="POST" autocomplete="off">
-      <div class="controls">
+  <form id="FormEsnafKayit" method="POST" autocomplete="off">
+    <div class="row">
+        <div class="col-md-5 offset-md-1">
+          <div class="form-group">Adınız Soyadınız *<input required type="text" name="adi_soyadi" class="form-control" value="<?php echo $_POST["adi_soyadi"];?>" placeholder="Adınız soyadınız"></div>
+          <div class="form-group">Telefonunuz *<input required type="text" name="telefonu" class="form-control" value="<?php echo $_POST["telefonu"];?>" placeholder="Telefon numaranız"></div>
+          <div class="form-group">ePosta Adresi *<input required type="email" name="eposta" class="form-control" value="<?php echo $_POST["eposta"];?>" placeholder="ePosta adresiniz"></div>
+          <div class="form-group">Parolanız *<input required type="password" name="parola" class="form-control" value="" placeholder="Giriş için parolanız"></div>
+          <div class="form-group">Parolanız (tekrar)*<input required type="password" name="parola2" class="form-control" value="" placeholder="Parolanız (tekrar)"></div>
+          <div class="form-group">Şehir * <select required name="il_kodu" id="il_kodu" onchange="IlceleriDoldur()" class="form-control" >> <?php echo $optionsIller; ?> </select> </div>
+          <div class="form-group">İlçe * <select required name="ilce_kodu" id="ilce_kodu" class="form-control" ></select> </div>
+          <div class="form-group">Mahalle <input type="text" name="mahalle" class="form-control" value="<?php echo $_POST["mahalle"];?>" placeholder="Mahalle adı"></div>
+          <div class="form-group">Cadde <input type="text" name="cadde" class="form-control" value="<?php echo $_POST["cadde"];?>" placeholder="Cadde adı"></div>
+          <div class="form-group">Sokak <input type="text" name="sokak" class="form-control" value="<?php echo $_POST["sokak"];?>" placeholder="Sokak adı"></div>
+          <div class="form-group">Bina/Site Adı <input type="text" name="bina_adi" class="form-control" value="<?php echo $_POST["bina_adi"];?>" placeholder="Bina/Site adı"></div>
+          <div class="form-group">Bina No <input type="text" name="bina_no" class="form-control" value="<?php echo $_POST["bina_no"];?>" placeholder="Bina No"></div>
+          <div class="form-group">Kapı No <input type="text" name="kapi_no" class="form-control" value="<?php echo $_POST["kapi_no"];?>" placeholder="Kapı No"></div>
+        </div>
 
-      <div class="form-group">Adınız Soyadınız *<input required type="text" name="adi_soyadi" class="form-control" value="<?php echo $_POST["adi_soyadi"];?>" placeholder="Adınız soyadınız"></div>
-      <div class="form-group">Telefonunuz *<input required type="text" name="telefonu" class="form-control" value="<?php echo $_POST["telefonu"];?>" placeholder="Telefon numaranız"></div>
-      <div class="form-group">ePosta Adresi *<input required type="email" name="eposta" class="form-control" value="<?php echo $_POST["eposta"];?>" placeholder="ePosta adresiniz"></div>
-      <div class="form-group">Parolanız *<input required type="password" name="parola" class="form-control" value="" placeholder="Giriş için parolanız"></div>
-      <div class="form-group">Parolanız (tekrar)*<input required type="password" name="parola2" class="form-control" value="" placeholder="Parolanız (tekrar)"></div>
-      <div class="form-group">Şehir * <select required name="il_kodu" id="il_kodu" onchange="IlceleriDoldur()" class="form-control" >> <?php echo $optionsIller; ?> </select> </div>
-      <div class="form-group">İlçe * <select required name="ilce_kodu" id="ilce_kodu" class="form-control" ></select> </div>
-      <div class="form-group">Mahalle <input type="text" name="mahalle" class="form-control" value="<?php echo $_POST["mahalle"];?>" placeholder="Mahalle adı"></div>
-      <div class="form-group">Cadde <input type="text" name="cadde" class="form-control" value="<?php echo $_POST["cadde"];?>" placeholder="Cadde adı"></div>
-      <div class="form-group">Sokak <input type="text" name="sokak" class="form-control" value="<?php echo $_POST["sokak"];?>" placeholder="Sokak adı"></div>
-      <div class="form-group">Bina/Site Adı <input type="text" name="bina_adi" class="form-control" value="<?php echo $_POST["bina_adi"];?>" placeholder="Bina/Site adı"></div>
-      <div class="form-group">Bina No <input type="text" name="bina_no" class="form-control" value="<?php echo $_POST["bina_no"];?>" placeholder="Bina No"></div>
-      <div class="form-group">Kapı No <input type="text" name="kapi_no" class="form-control" value="<?php echo $_POST["kapi_no"];?>" placeholder="Kapı No"></div>
-      <div class="form-group">Adres Tarifi <input type="text" name="adres_tarifi" class="form-control" value="<?php echo $_POST["adres_tarifi"];?>" placeholder="Adres tarifiniz"></div>
+        <div class="col-md-5">
+          <div class="form-group">Adres Tarifi <input type="text" name="adres_tarifi" class="form-control" value="<?php echo $_POST["adres_tarifi"];?>" placeholder="Adres tarifiniz"></div>
+          <div class="form-group">İşletme Adı *<input required type="text" name="isletme_adi" class="form-control" value="<?php echo $_POST["isletme_adi"];?>" placeholder="isletme_adi"></div>
+          <div class="form-group">İşletmenin Tam Adı *<input required type="text" name="isletme_tam_adi" class="form-control" value="<?php echo $_POST["isletme_tam_adi"];?>" placeholder="isletme_tam_adi"></div>
+          <div class="form-group">Vergi Dairesi *<input required type="text" name="vergi_dairesi" class="form-control" value="<?php echo $_POST["vergi_dairesi"];?>" placeholder="vergi_dairesi"></div>
+          <div class="form-group">Vergi Numarası *<input required type="text" name="vergi_no" class="form-control" value="<?php echo $_POST["vergi_no"];?>" placeholder="vergi_no"></div>
+          <div class="form-group">İşletme Sahibi/Yönetisicisi Adı Soyadı *<input required type="text" name="yonetici_adi_soyadi" class="form-control" value="<?php echo $_POST["yonetici_adi_soyadi"];?>" placeholder="yonetici_adi_soyadi"></div>
+          <div class="form-group">işletme Sahibi/Yönetisicisi Telefonu *<input required type="text" name="yonetici_telefonu" class="form-control" value="<?php echo $_POST["yonetici_telefonu"];?>" placeholder="yonetici_telefonu"></div>
+          <div class="form-group">Harita Enlem bilgisi *<input required type="text" name="enlem" class="form-control" value="<?php echo $_POST["enlem"];?>" placeholder="enlem"></div>
+          <div class="form-group">Harita Boylam bilgisi *<input required type="text" name="boylam" class="form-control" value="<?php echo $_POST["boylam"];?>" placeholder="boylam"></div>
+          <div class="form-group">Minimum Sipariş Tutarı *<input required type="text" name="min_siparis_tutari" class="form-control" value="<?php echo $_POST["min_siparis_tutari"];?>" placeholder="min_siparis_tutari"></div>
+          <div class="form-group">Açılış Saati *<input required type="text" name="acilis_saati" class="form-control" value="<?php echo $_POST["acilis_saati"];?>" placeholder="acilis_saati"></div>
+          <div class="form-group">Kapanış Saati *<input required type="text" name="kapanis_saati" class="form-control" value="<?php echo $_POST["kapanis_saati"];?>" placeholder="kapanis_saati"></div>
+          <div class="form-group">Ana Faaliye Alanı * <select required name="ana_faaliyet_alani" id="ana_faaliyet_alani" class="form-control" >> <?php echo $optionsFaaliyetAlanlari; ?> </select> </div>
 
-      <div class="form-group">İşletme Adı *<input required type="text" name="isletme_adi" class="form-control" value="<?php echo $_POST["isletme_adi"];?>" placeholder="isletme_adi"></div>
-      <div class="form-group">İşletmenin Tam Adı *<input required type="text" name="isletme_tam_adi" class="form-control" value="<?php echo $_POST["isletme_tam_adi"];?>" placeholder="isletme_tam_adi"></div>
-      <div class="form-group">Vergi Dairesi *<input required type="text" name="vergi_dairesi" class="form-control" value="<?php echo $_POST["vergi_dairesi"];?>" placeholder="vergi_dairesi"></div>
-      <div class="form-group">Vergi Numarası *<input required type="text" name="vergi_no" class="form-control" value="<?php echo $_POST["vergi_no"];?>" placeholder="vergi_no"></div>
-      <div class="form-group">İşletme Sahibi/Yönetisicisi Adı Soyadı *<input required type="text" name="yonetici_adi_soyadi" class="form-control" value="<?php echo $_POST["yonetici_adi_soyadi"];?>" placeholder="yonetici_adi_soyadi"></div>
-      <div class="form-group">işletme Sahibi/Yönetisicisi Telefonu *<input required type="text" name="yonetici_telefonu" class="form-control" value="<?php echo $_POST["yonetici_telefonu"];?>" placeholder="yonetici_telefonu"></div>
-      <div class="form-group">Harita Enlem bilgisi *<input required type="text" name="enlem" class="form-control" value="<?php echo $_POST["enlem"];?>" placeholder="enlem"></div>
-      <div class="form-group">Harita Boylam bilgisi *<input required type="text" name="boylam" class="form-control" value="<?php echo $_POST["boylam"];?>" placeholder="boylam"></div>
-      <div class="form-group">Minimum Sipariş Tutarı *<input required type="text" name="min_siparis_tutari" class="form-control" value="<?php echo $_POST["min_siparis_tutari"];?>" placeholder="min_siparis_tutari"></div>
-      <div class="form-group">Açılış Saati *<input required type="text" name="acilis_saati" class="form-control" value="<?php echo $_POST["acilis_saati"];?>" placeholder="acilis_saati"></div>
-      <div class="form-group">Kapanış Saati *<input required type="text" name="kapanis_saati" class="form-control" value="<?php echo $_POST["kapanis_saati"];?>" placeholder="kapanis_saati"></div>
-      <div class="form-group">Ana Faaliye Alanı * <select required name="ana_faaliyet_alani" id="ana_faaliyet_alani" class="form-control" >> <?php echo $optionsFaaliyetAlanlari; ?> </select> </div>
-
-<div class="form-group">
-      <input class="btn btn-success form-control" type="submit" value="İşletme İçin Kayıt Başvurusunu Gönder !">
-</div>
-      </div>
-    </form>
-
-  </div> <!-- Form Sutunu -->
-</div> <!-- Form Satırı -->
+          <input class="btn btn-success" type="submit" value="İşletme İçin Kayıt Başvurusunu Gönder !">
+        </div>
+    </div>
+  </form>
 
 <script type="text/javascript">
     function IlceleriDoldur() {
