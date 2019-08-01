@@ -13,3 +13,6 @@
   <body>
 <?php require("sayfa.navbar.php");?>
     <div class="container"> <!-- Ana Container'imiz burada başladı -->
+
+      <div class="row">
+      <div class="col-md-10 offset-md-1">
