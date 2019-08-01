@@ -1,12 +1,12 @@
 <?php
   // Sistem genelinde kullanılacak ayarların bulunduğu değişkenleri alalım
-  require("ayarlar.php");
+  require("_ayarlar.php");
 
   // Sistem genelinde kullanılacak hazır fonksiyonları yükleyelim
-  require("kutuphane.php");
+  require("_kutuphane.php");
 
   // Veri tabanı bağlantısını kuralım
-  require("db.php");
+  require("_db.php");
 
   // Sayfanın ÜST kısmını alalım
   require("sayfa.ust.php");
