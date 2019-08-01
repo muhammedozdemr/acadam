@@ -11,5 +11,5 @@
     <title><?php echo $GENEL_sayfa_basligi; ?></title>
   </head>
   <body>
-
+<?php require("sayfa.navbar.php");?>
     <div class="container"> <!-- Ana Container'imiz burada başladı -->
