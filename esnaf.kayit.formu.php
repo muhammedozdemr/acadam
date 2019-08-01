@@ -1,94 +1,8 @@
 <?php
 
-  // FORM Kayıt için gönderilmişse gerekli işlemi yapalım
-  if(isset( $_POST["adi_soyadi"] )) {
-
-    // Hata mesajları için bir dizi tanımlayalım
-    $MESAJ = array();
-
-    if($_POST["parola"] <> $_POST["parola2"]) {
-      $MESAJ[] = "Parola ve tekrarı aynı değil";
-    }
-
-    if($_POST["ilce_kodu"] == 0) {
-      $MESAJ[] = "İlçe seçimi yapılmadı";
-    }
-
-
-    // INSERT için SQL hazırlayalım...
-    $SQL = sprintf("INSERT INTO esnaflar SET
-                adi_soyadi = '%s',
-                telefonu = '%s',
-                eposta = '%s',
-                parola = '%s',
-                il_kodu = '%s',
-                ilce_kodu = '%s',
-                mahalle = '%s',
-                cadde = '%s',
-                sokak = '%s',
-                bina_adi = '%s',
-                bina_no = '%s',
-                kapi_no = '%s',
-                adres_tarifi = '%s',
-
-                isletme_adi = '%s',
-                isletme_tam_adi = '%s',
-                vergi_dairesi = '%s',
-                vergi_no = '%s',
-                yonetici_adi_soyadi = '%s',
-                yonetici_telefonu = '%s',
-                enlem = '%s',
-                boylam = '%s',
-                min_siparis_tutari = '%s',
-                acilis_saati = '%s',
-                kapanis_saati = '%s'   ",
-
-                $_POST["adi_soyadi"],
-                $_POST["telefonu"],
-                $_POST["eposta"],
-                $_POST["parola"],
-                $_POST["il_kodu"],
-                $_POST["ilce_kodu"],
-                $_POST["mahalle"],
-                $_POST["cadde"],
-                $_POST["sokak"],
-                $_POST["bina_adi"],
-                $_POST["bina_no"],
-                $_POST["kapi_no"],
-                $_POST["adres_tarifi"],
-
-                $_POST["isletme_adi"],
-                $_POST["isletme_tam_adi"],
-                $_POST["vergi_dairesi"],
-                $_POST["vergi_no"],
-                $_POST["yonetici_adi_soyadi"],
-                $_POST["yonetici_telefonu"],
-                $_POST["enlem"],
-                $_POST["boylam"],
-                $_POST["min_siparis_tutari"],
-                $_POST["acilis_saati"],
-                $_POST["kapanis_saati"]
-
-                 );
-
-        // Kontrol için SQL'i yazdıralım...
-        // dd($SQL);
-
-        $ISLEM_SONUCU = 0; // 0: Başarısız, 1: Başarılı
-        if( count($MESAJ) == 0 ) {
-          // KAYIT için hazırız. Veritabanına ekleyelim
-          $rows = mysqli_query($db, $SQL);
-          $ISLEM_SONUCU = 1;
-          die("<H1>ESNAF KAYIT BAŞARILI</H1>");
-          // Yönlendirme???
-          // Yönlendirme???
-          // Yönlendirme???
-        } else {
-          // Hatalar var, kayıt yapamıyoruz...
-          $ISLEM_SONUCU = 0;
-        }
-  }
-
+################### FORM içinde kullanılan COMBO'ların değerlerinin hazırlanması
+################### FORM içinde kullanılan COMBO'ların değerlerinin hazırlanması
+################### FORM içinde kullanılan COMBO'ların değerlerinin hazırlanması
 
     ################### Şehir adlarını hazırlayalım...
     ################### Şehir adlarını hazırlayalım...
@@ -116,12 +30,10 @@
       $optionsFaaliyetAlanlari .= sprintf("<option value='%s'>%s</option> \n", $row["faaliyet_id"], $row["faaliyet_adi"]);
     } // while
 
-
-
 ?>
   <div class="row">
-    <div class="col-md-8 offset-md-2 my-5 text-center">
-      <h1>Esnaf Kayıt Formu</h1>
+    <div class="col-md-12 my-4 text-center">
+      <h2>Esnaf Kayıt Formu</h2>
       <?php
         if( isset($MESAJ) and count($MESAJ) > 0 ) {
           echo "<div style='color:red'>";
@@ -132,9 +44,9 @@
     </div>
   </div>
 
-  <form id="FormEsnafKayit" method="POST" autocomplete="off">
+  <form id="EsnafKayitFormu" autocomplete="off">
     <div class="row">
-        <div class="col-md-5 offset-md-1">
+        <div class="col-md-6">
           <div class="form-group">Adınız Soyadınız *<input required type="text" name="adi_soyadi" class="form-control" value="<?php echo $_POST["adi_soyadi"];?>" placeholder="Adınız soyadınız"></div>
           <div class="form-group">Telefonunuz *<input required type="text" name="telefonu" class="form-control" value="<?php echo $_POST["telefonu"];?>" placeholder="Telefon numaranız"></div>
           <div class="form-group">ePosta Adresi *<input required type="email" name="eposta" class="form-control" value="<?php echo $_POST["eposta"];?>" placeholder="ePosta adresiniz"></div>
@@ -150,7 +62,7 @@
           <div class="form-group">Kapı No <input type="text" name="kapi_no" class="form-control" value="<?php echo $_POST["kapi_no"];?>" placeholder="Kapı No"></div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="form-group">Adres Tarifi <input type="text" name="adres_tarifi" class="form-control" value="<?php echo $_POST["adres_tarifi"];?>" placeholder="Adres tarifiniz"></div>
           <div class="form-group">İşletme Adı *<input required type="text" name="isletme_adi" class="form-control" value="<?php echo $_POST["isletme_adi"];?>" placeholder="isletme_adi"></div>
           <div class="form-group">İşletmenin Tam Adı *<input required type="text" name="isletme_tam_adi" class="form-control" value="<?php echo $_POST["isletme_tam_adi"];?>" placeholder="isletme_tam_adi"></div>
@@ -165,9 +77,14 @@
           <div class="form-group">Kapanış Saati *<input required type="text" name="kapanis_saati" class="form-control" value="<?php echo $_POST["kapanis_saati"];?>" placeholder="kapanis_saati"></div>
           <div class="form-group">Ana Faaliye Alanı * <select required name="ana_faaliyet_alani" id="ana_faaliyet_alani" class="form-control" >> <?php echo $optionsFaaliyetAlanlari; ?> </select> </div>
 
-          <input class="btn btn-success" type="submit" value="İşletme İçin Kayıt Başvurusunu Gönder !">
         </div>
+
+        <div class="col-md-12 text-center">
+          <input class="btn btn-success" type="button" value="Esnaf Kayıt Başvurusunu Gönder !" onclick="FORMU_KAYDET()">
+  			</div>
+
     </div>
+
   </form>
 
 <script type="text/javascript">
@@ -179,4 +96,51 @@
         });
       });
     } // IlceleriDoldur()
+</script>
+
+
+
+<script>
+	function FORMU_KAYDET() {
+		// Kaydetme modülünü çağıralım / Formu POST edelim
+
+	   $.ajax({
+	       url: "esnaf.kayit.formu.kaydet.php", // FORM, bu sayfaya gönderilecek.
+	       type: 'POST',  // Form POST ile gönderilsin
+	       dataType: 'JSON', // Gelen veri HTML tipinde olacak. (Diğer bir seçenek de JSON'dur)
+	       data: $("#EsnafKayitFormu").serialize(), // FORM öğesi içindeki tüm değişkenleri ve değerlerini göndermek üzere hazırla
+	       success: function(AjaxJSONCevap){
+	       		// Buraya geldiğinde çağrılan sayfanın işi tamamlanmıştır
+
+	       		if(AjaxJSONCevap.ISLEM_SONUCU == "TAMAM") {
+       				// Hata yoksa teşekkür mesajı gösterelim
+       				// alert("Mesajınız alındı. Teşekkür ederiz!");
+
+       				// Teşekkür mesajını https://sweetalert2.github.io/ kullanarak verelim
+							Swal.fire({
+							  type: 'success',
+							  title: 'Teşekkürler !',
+							  confirmButtonText: 'Tamam',
+							  text: 'Başvuru formunuz onay sürecine alındı. Müşteri temsilcilerimiz sizi arayacaktır.',
+								onClose: () => {	SayfayaGit('index.php');	}
+							})
+
+       			} else {
+					// Hata varsa ekrana gösterelim
+					// alert( AjaxHTMLCevap )
+
+					Swal.fire({
+					  type: 'error',
+					  title: 'Eksik veri girişi',
+					  confirmButtonText: 'Tamam',
+					  text: AjaxJSONCevap.HATAMESAJI
+					})
+
+
+				}
+	   		} // success
+	   }); // ajax
+
+	} // FORMU_KAYDET
+
 </script>
