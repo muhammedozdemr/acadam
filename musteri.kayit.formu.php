@@ -80,8 +80,8 @@
 
 ?>
 <div class="row">
-  <div class="col-md-8 offset-md-2 my-5 text-center">
-    <h1>Müşteri Kayıt Formu</h1>
+  <div class="col-md-12 my-4 text-center">
+    <h2>Müşteri Kayıt Formu</h2>
     <?php
       if( isset($MESAJ) and count($MESAJ) > 0 ) {
         echo "<div style='color:red'>";
@@ -95,7 +95,7 @@
 
 <form id="FormMusteriKayit" method="POST" autocomplete="off">
 <div class="row">
-    <div class="col-md-5 offset-md-1">
+    <div class="col-md-6">
       <div class="form-group">Adınız Soyadınız *<input required type="text" name="adi_soyadi" class="form-control" value="<?php echo $_POST["adi_soyadi"];?>" placeholder="Adınız soyadınız"></div>
       <div class="form-group">Telefonunuz *<input required type="text" name="telefonu" class="form-control" value="<?php echo $_POST["telefonu"];?>" placeholder="Telefon numaranız"></div>
       <div class="form-group">ePosta Adresi *<input required type="email" name="eposta" class="form-control" value="<?php echo $_POST["eposta"];?>" placeholder="ePosta adresiniz"></div>
@@ -105,7 +105,7 @@
       <div class="form-group">İlçe * <select required name="ilce_kodu" id="ilce_kodu" class="form-control" ></select> </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-6">
       <div class="form-group">Mahalle <input type="text" name="mahalle" class="form-control" value="<?php echo $_POST["mahalle"];?>" placeholder="Mahalle adı"></div>
       <div class="form-group">Cadde <input type="text" name="cadde" class="form-control" value="<?php echo $_POST["cadde"];?>" placeholder="Cadde adı"></div>
       <div class="form-group">Sokak <input type="text" name="sokak" class="form-control" value="<?php echo $_POST["sokak"];?>" placeholder="Sokak adı"></div>
